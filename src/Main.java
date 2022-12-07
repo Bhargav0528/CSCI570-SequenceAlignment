@@ -1,10 +1,15 @@
 import java.util.*;
+import java.io.IOException;
+
 public class Main {
   static int delta = 30;
   public static void main(String[] args) {
     System.out.println("Hello world!");
     System.out.println(sequenceAlignment("A", "C"));
 
+  public static void main(String[] args) throws IOException {
+    InputGeneration inputGeneration = new InputGeneration();
+    inputGeneration.readInputs("resources/input.txt");
   }
 
 
