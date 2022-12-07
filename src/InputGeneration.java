@@ -1,3 +1,5 @@
+import model.InputString;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +13,7 @@ public class InputGeneration {
   final String regex = "^\\d+$";
   final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
-  public void readInputs(String inputFile) throws IOException {
+  public InputString readInputs(String inputFile) throws IOException {
     File file = new File(inputFile);
     BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
@@ -34,17 +36,16 @@ public class InputGeneration {
       baseString2Modifiers.add(Integer.parseInt(indices));
     }
 
-    modifyString(baseString1, baseString1Modifiers);
-    modifyString(baseString2, baseString2Modifiers);
+    return new InputString(modifyString(baseString1, baseString1Modifiers), modifyString(baseString2, baseString2Modifiers));
   }
 
 
-  public void modifyString(String baseString, List<Integer> modifiers) {
+  public String modifyString(String baseString, List<Integer> modifiers) {
     StringBuilder result = new StringBuilder(baseString);
     for (Integer index: modifiers) {
       result = new StringBuilder(result.substring(0, index + 1) + result + result.substring(index + 1));
     }
-    System.out.println(result);
+    return result.toString();
   }
 
 }
