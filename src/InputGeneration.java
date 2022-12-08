@@ -1,4 +1,4 @@
-import model.InputString;
+import model.StringPair;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,7 +13,7 @@ public class InputGeneration {
   final String regex = "^\\d+$";
   final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
-  public InputString readInputs(String inputFile) throws IOException {
+  public StringPair readInputs(String inputFile) throws IOException {
     File file = new File(inputFile);
     BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
@@ -36,7 +36,7 @@ public class InputGeneration {
       baseString2Modifiers.add(Integer.parseInt(indices));
     }
 
-    return new InputString(modifyString(baseString1, baseString1Modifiers), modifyString(baseString2, baseString2Modifiers));
+    return new StringPair(modifyString(baseString1, baseString1Modifiers), modifyString(baseString2, baseString2Modifiers));
   }
 
 
